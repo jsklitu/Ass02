@@ -44,7 +44,7 @@ namespace Student.Tests
             var expected = "Student ID: 1234." + Environment.NewLine + 
                     "Student name: Mark Falk." + Environment.NewLine +
                     "Status: GRADUATED." + Environment.NewLine +
-                    "Start date: 19-07-2000.";
+                    "Start date: 19 07 2000.";
        
              Assert.Equal(expected, actualstring);
 

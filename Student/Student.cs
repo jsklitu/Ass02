@@ -107,7 +107,7 @@ public record ImmutableStudent
             return "Student ID: " + ID + "." + Environment.NewLine +
                     "Student name: " + GivenName + " " + Surname + "." + Environment.NewLine +
                     "Status: " + Status + "." + Environment.NewLine +
-                    "Start date: " + StartDate.ToString("d", CultureInfo.CreateSpecificCulture("da-DK")) + ".";
+                    "Start date: " + StartDate.ToString("dd MM yyyy") + ".";
 
         }
     }
