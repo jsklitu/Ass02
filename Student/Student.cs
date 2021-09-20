@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace Student
 {
@@ -97,7 +98,17 @@ public record ImmutableStudent
 
         public static void Main(string[] args)
         {
-          
+        
+        }
+
+           public override String ToString()
+        {
+           
+            return "Student ID: " + ID + "." + Environment.NewLine +
+                    "Student name: " + GivenName + " " + Surname + "." + Environment.NewLine +
+                    "Status: " + Status + "." + Environment.NewLine +
+                    "Start date: " + StartDate.ToString("d", CultureInfo.CreateSpecificCulture("da-DK")) + ".";
+
         }
     }
 

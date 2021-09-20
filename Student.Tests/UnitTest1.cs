@@ -1,5 +1,6 @@
 using System;
 using Xunit;
+using System.Globalization;
 
 namespace Student.Tests
 {
@@ -40,8 +41,13 @@ namespace Student.Tests
             var student1 = new ImmutableStudent{ID = 1234, GivenName = "Mark", Surname = "Falk", EndDate = new DateTime(2001,07,19), GraduationDate = new DateTime(2001,07,19), StartDate = new DateTime(2000,07,19)};
             var actualstring = student1.ToString();
             
-            var expected = "ImmutableStudent { ID = 1234, GivenName = Mark, Surname = Falk, StartDate = 19-07-2000 00:00:00, EndDate = 19-07-2001 00:00:00, GraduationDate = 19-07-2001 00:00:00, Status = GRADUATED }";
-            Assert.Equal(expected, actualstring);
+            var expected = "Student ID: 1234." + Environment.NewLine + 
+                    "Student name: Mark Falk." + Environment.NewLine +
+                    "Status: GRADUATED." + Environment.NewLine +
+                    "Start date: 19-07-2000.";
+       
+             Assert.Equal(expected, actualstring);
+
         }
     }
 }
