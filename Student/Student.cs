@@ -42,10 +42,7 @@ namespace Student
         public enum StatusEnum
         { NEW, ACTIVE, DROPOUT, GRADUATED }
 
-        public static void Main(string[] args)
-        {
-
-        }
+        
 
 
         public override String ToString()
@@ -58,7 +55,51 @@ namespace Student
 
     }
 
+public record ImmutableStudent
+    {
+        public int ID { get; init; }
 
+        public string GivenName { get; init; }
+        public string Surname { get; init; }
+
+        public DateTime StartDate { get; init; }
+        public DateTime EndDate { get; init; }
+        public DateTime GraduationDate { get; init; }
+
+        private StatusEnum _Status;
+        public StatusEnum Status
+        {
+            get => _Status;
+        }
+
+        public ImmutableStudent()
+        {
+            var now = DateTime.Now;
+            if (StartDate <= now && EndDate >= now)
+            {
+                _Status = StatusEnum.ACTIVE;
+            }
+            else if (GraduationDate == EndDate)
+            {
+                _Status = StatusEnum.GRADUATED;
+            }
+            else if (StartDate > now)
+            {
+                _Status = StatusEnum.NEW;
+            }
+            else
+            {
+                _Status = StatusEnum.DROPOUT;
+            }
+        }
+        public enum StatusEnum
+        { NEW, ACTIVE, DROPOUT, GRADUATED }
+
+        public static void Main(string[] args)
+        {
+          
+        }
+    }
 
 
 

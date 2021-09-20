@@ -18,5 +18,30 @@ namespace Student.Tests
                     "Status: GRADUATED.";
             Assert.Equal(expected, output);
         }
+
+        [Fact]
+        public void Compare_StudentClass_and_ImmutableStudent_return_true(){
+            var student1 = new ImmutableStudent{ID = 1234, GivenName = "Mark", Surname = "Falk", EndDate = new DateTime(2001,07,19), GraduationDate = new DateTime(2001,07,19), StartDate = new DateTime(2000,07,19)};
+            var student2 = new ImmutableStudent{ID = 1234, GivenName = "Mark", Surname = "Falk", EndDate = new DateTime(2001,07,19), GraduationDate = new DateTime(2001,07,19), StartDate = new DateTime(2000,07,19)};
+        
+            Assert.Equal(student1, student2);
+        }
+
+        [Fact]
+        public void Compare_StudentClass_and_ImmutableStudent_return_false(){
+            var student1 = new ImmutableStudent{ID = 1234, GivenName = "Mark", Surname = "Falk", EndDate = new DateTime(2001,07,19), GraduationDate = new DateTime(2001,07,19), StartDate = new DateTime(2000,07,19)};
+            var student2 = new ImmutableStudent{ID = 1234, GivenName = "Mark", Surname = "Kalk", EndDate = new DateTime(2001,07,19), GraduationDate = new DateTime(2001,07,19), StartDate = new DateTime(2000,07,19)};
+        
+            Assert.NotEqual(student1, student2);
+        }
+
+        [Fact]
+        public void compare_tostring(){
+            var student1 = new ImmutableStudent{ID = 1234, GivenName = "Mark", Surname = "Falk", EndDate = new DateTime(2001,07,19), GraduationDate = new DateTime(2001,07,19), StartDate = new DateTime(2000,07,19)};
+            var actualstring = student1.ToString();
+            
+            var expected = "ImmutableStudent { ID = 1234, GivenName = Mark, Surname = Falk, StartDate = 19-07-2000 00:00:00, EndDate = 19-07-2001 00:00:00, GraduationDate = 19-07-2001 00:00:00, Status = GRADUATED }";
+            Assert.Equal(expected, actualstring);
+        }
     }
 }
